@@ -7,12 +7,17 @@
 package com.client;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.xml.namespace.QName;
+import javax.xml.ws.BindingProvider;
 import javax.xml.ws.Service;
 import javax.xml.ws.handler.Handler;
 import javax.xml.ws.handler.HandlerResolver;
+import javax.xml.ws.handler.MessageContext;
 import javax.xml.ws.handler.PortInfo;
 import javax.xml.ws.soap.SOAPBinding;
 
@@ -49,6 +54,16 @@ public class SimpleServiceDynamicClient {
             }
         });
         SimpleService client = service.getPort(portName, SimpleService.class);
+        
+        //adding security context
+        
+        Map<String, Object> req_ctx = ((BindingProvider)client).getRequestContext();
+
+        Map<String, List<String>> headers = new HashMap<String, List<String>>();
+        headers.put("Username", Collections.singletonList("nabin"));
+        headers.put("Password", Collections.singletonList("password"));
+        req_ctx.put(MessageContext.HTTP_REQUEST_HEADERS, headers);
+        
         //Prepare argument
         Customer cus = new Customer();
         cus.setAddress("B-205, Silver Estate, Doltala -700132");
