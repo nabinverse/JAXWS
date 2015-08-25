@@ -60,8 +60,8 @@ public class SimpleServiceDynamicClient {
         Map<String, Object> req_ctx = ((BindingProvider)client).getRequestContext();
 
         Map<String, List<String>> headers = new HashMap<String, List<String>>();
-        headers.put("Username", Collections.singletonList("nabin"));
-        headers.put("Password", Collections.singletonList("password"));
+        headers.put("Username", Collections.singletonList("Automation-User1@bbc.co.uk"));
+        headers.put("Password", Collections.singletonList("brusPA7e"));
         req_ctx.put(MessageContext.HTTP_REQUEST_HEADERS, headers);
         
         //Prepare argument

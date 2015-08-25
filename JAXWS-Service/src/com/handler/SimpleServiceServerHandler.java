@@ -2,7 +2,10 @@ package com.handler;
 
 import java.io.IOException;
 import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
+
 import javax.xml.namespace.QName;
 import javax.xml.soap.Node;
 import javax.xml.soap.SOAPBody;
@@ -25,7 +28,10 @@ public class SimpleServiceServerHandler implements SOAPHandler<SOAPMessageContex
 	System.out.println("Server : handleMessage()......");
 		
 	Boolean isRequest = (Boolean) context.get(MessageContext.MESSAGE_OUTBOUND_PROPERTY);
-
+	
+	 Map<String, List<String>> http_headers = (Map) context.get(MessageContext.HTTP_REQUEST_HEADERS);
+     List<String> userList = (List) http_headers.get("Username");
+     List<String> passList = (List) http_headers.get("Password");
 	//for response message only, true for outbound messages, false for inbound
 	if(!isRequest){
 			
