@@ -19,6 +19,7 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.ws.RequestWrapper;
 import javax.xml.ws.ResponseWrapper;
 
+import com.tintin.CalculationException;
 import com.tintin.SimpleService;
 import com.tintin.SimpleServiceImplService;
 
@@ -44,11 +45,16 @@ public final class SimpleServiceStaticClient {
        com.model.Customer customer = new com.model.Customer();
        customer.setAddress("Address134217423");
        customer.setAge(35);
-       customer.setName("Sujit Biswas");
+       customer.setName(" ");
        customer.setPhone("938749820");
+       try{
        com.model.BillDetails bd = servicePort.calculateBill(customer);
        System.out.println("Amount : " + bd.getAmount());
        System.out.println("Address : " + bd.getBillAddress());
+       }
+       catch(CalculationException calex){
+    	   System.out.println(calex);
+       }
 
     }
 

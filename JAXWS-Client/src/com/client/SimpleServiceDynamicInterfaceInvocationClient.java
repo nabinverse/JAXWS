@@ -21,6 +21,7 @@ import javax.xml.ws.soap.SOAPBinding;
 
 import com.model.BillDetails;
 import com.model.Customer;
+import com.tintin.CalculationException;
 import com.tintin.SimpleService;;
 
 /**
@@ -47,6 +48,7 @@ public class SimpleServiceDynamicInterfaceInvocationClient {
         Source input = new StreamSource(bais);
 
          //  Invoking WebService
+        try{
         Source response = dispatch.invoke(input);
          
          //  Process the response.
@@ -58,6 +60,10 @@ public class SimpleServiceDynamicInterfaceInvocationClient {
          //  Write out the response content to string.
         String responseStr = new String(baos.toByteArray());
         System.out.println("Response : ->"+responseStr);
+        }
+        catch(Exception calex){
+        	System.out.println("Cal exception");
+        }
     }
 
 }

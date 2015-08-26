@@ -50,14 +50,18 @@ public class SimpleServiceClientHandler implements SOAPHandler<SOAPMessageContex
         return true;
     }
 
-    public boolean handleFault(SOAPMessageContext context) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+    
 
   
 	@Override
 	public void close(MessageContext arg0) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public boolean handleFault(SOAPMessageContext arg0) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

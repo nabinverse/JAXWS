@@ -24,6 +24,7 @@ import javax.xml.ws.soap.SOAPBinding;
 import com.handler.SimpleServiceClientHandler;
 import com.model.BillDetails;
 import com.model.Customer;
+import com.tintin.CalculationException;
 import com.tintin.SimpleService;;
 
 /**
@@ -75,7 +76,7 @@ public class SimpleServiceDynamicClient {
         	BillDetails bd= client.calculateBill(cus);
         	System.out.println("Amount : "+bd.getAmount());
         	System.out.println(bd.getBillAddress());
-        }catch(Exception e){
+        }catch(CalculationException e){
         	System.out.println("exception");
         }
         /*  SIMPLE REQUEST /RESPONSE      

@@ -28,6 +28,7 @@ import com.model.Customer;
 public class ObjectFactory {
 
     private final static QName _CalculateBill_QNAME = new QName("http://tintin.com/", "calculateBill");
+    private final static QName _CalculationFault_QNAME = new QName("http://tintin.com/", "CalculationFault");
     private final static QName _CalculateBillResponse_QNAME = new QName("http://tintin.com/", "calculateBillResponse");
 
     /**
@@ -43,6 +44,14 @@ public class ObjectFactory {
      */
     public CalculateBill createCalculateBill() {
         return new CalculateBill();
+    }
+
+    /**
+     * Create an instance of {@link CalculationFaultBean }
+     * 
+     */
+    public CalculationFaultBean createCalculationFaultBean() {
+        return new CalculationFaultBean();
     }
 
     /**
@@ -76,6 +85,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://tintin.com/", name = "calculateBill")
     public JAXBElement<CalculateBill> createCalculateBill(CalculateBill value) {
         return new JAXBElement<CalculateBill>(_CalculateBill_QNAME, CalculateBill.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CalculationFaultBean }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tintin.com/", name = "CalculationFault")
+    public JAXBElement<CalculationFaultBean> createCalculationFault(CalculationFaultBean value) {
+        return new JAXBElement<CalculationFaultBean>(_CalculationFault_QNAME, CalculationFaultBean.class, null, value);
     }
 
     /**
