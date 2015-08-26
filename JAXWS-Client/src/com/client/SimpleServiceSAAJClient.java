@@ -40,7 +40,7 @@ public class SimpleServiceSAAJClient {
         <?xml version="1.0" ?><S:Envelope xmlns:S="http://www.w3.org/2003/05/soap-envelope"><S:Body><ns2:calculateBill xmlns:ns2="http://tintin.com/"><arg0><address>B-205, Silver Estate, Doltala -700132</address><age>29</age><name>Nabin Mandal</name><phone>8697042514</phone></arg0></ns2:calculateBill></S:Body></S:Envelope>
          <soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"><soap:Body><ns2:calculateBillResponse xmlns:ns2="http://tintin.com/"><return><amount>3456</amount><billAddress>Nabin Mandal : B-205, Silver Estate, Doltala -700132</billAddress><endDate>2015-08-25T15:58:58.433+05:30</endDate><startDate>2015-08-25T15:15:46.433+05:30</startDate></return></ns2:calculateBillResponse></soap:Body></soap:Envelope>
          */
-    	InputStream is =new FileInputStream(new File("C:\\Users\\IBM_ADMIN\\git\\JAXWS\\JAXWS-Client\\src\\com\\client\\soap.txt"));
+    	InputStream is =new FileInputStream(new File("C:\\Users\\IBM_ADMIN\\git\\Latest\\JAXWS\\JAXWS-Client\\src\\com\\client\\soap.txt"));
     	SOAPConnectionFactory soapCF = SOAPConnectionFactory.newInstance();
         SOAPConnection soapConnection = soapCF.createConnection();
         MimeHeaders mhs =new MimeHeaders();

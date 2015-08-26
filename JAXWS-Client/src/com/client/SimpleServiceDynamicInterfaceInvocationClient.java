@@ -37,12 +37,12 @@ public class SimpleServiceDynamicInterfaceInvocationClient {
         //below code wants wsdl to be present on class path
         //Service service = Service.create(serviceName);
         //service.addPort(portName, SOAPBinding.SOAP11HTTP_BINDING,"http://localhost:8080/JAXWS-Service/services/SimpleServiceImplPort");
-        Service service = Service.create(new URL("http://localhost:444/MM_EM3_StockFacadeWeb/sca/Exp_ISpoolService_SOAP?wsdl"),serviceName);
+        Service service = Service.create(new URL("http://localhost:8080/JAXWS-Service/services/SimpleServiceImplPort?wsdl"),serviceName);
         
         //Create the dynamic invocation object from this service.
         Dispatch<Source> dispatch = service.createDispatch(portName,Source.class,Service.Mode.PAYLOAD);
          
-        String inputMsg="<ns2:calculateBill xmlns:ns2=\"http://tintin.com/\"><arg0><address>B-205, Silver Estate, Doltala -700132</address><age>29</age><name>Nabin Mandal</name><phone>8697042514</phone></arg0></ns2:calculateBill>";
+        String inputMsg="<ns2:calculateBill xmlns:ns2=\"http://tintin.com/\"><arg0><address>B-205, Silver Estate, Doltala -700132</address><age>29</age><name> </name><phone>8697042514</phone></arg0></ns2:calculateBill>";
         ByteArrayInputStream bais = new ByteArrayInputStream(inputMsg.getBytes());
         Source input = new StreamSource(bais);
 
