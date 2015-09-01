@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="SimpleServiceImplService" xmlns:jaxws="http://java.sun.com/xml/ns/jaxws" targetNamespace="http://tintin.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://tintin.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+  <wsdl:types>
+    <schema xmlns="http://www.w3.org/2001/XMLSchema">
+  <import namespace="http://tintin.com/" schemaLocation="simpleserviceimpl_schema1.xsd"/>
+</schema>
+  </wsdl:types>
+  <wsdl:message name="CalculationException">
+    <wsdl:part name="CalculationException" element="tns:CalculationFault">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="calculateBill">
+    <wsdl:part name="parameters" element="tns:calculateBill">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="calculateBillResponse">
+    <wsdl:part name="parameters" element="tns:calculateBillResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="SimpleService">
+    <wsdl:operation name="calculateBill">
+      <wsdl:input name="calculateBill" message="tns:calculateBill">
+    </wsdl:input>
+      <wsdl:output name="calculateBillResponse" message="tns:calculateBillResponse">
+    </wsdl:output>
+      <wsdl:fault name="CalculationException" message="tns:CalculationException">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SimpleServiceImplServiceSoapBinding" type="tns:SimpleService">
+    <soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="calculateBill">
+      <soap12:operation soapAction="" style="document"/>
+      <wsdl:input name="calculateBill">
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="calculateBillResponse">
+        <soap12:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="CalculationException">
+        <soap12:fault name="CalculationException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SimpleServiceImplService">
+    <wsdl:port name="SimpleServiceImplPort" binding="tns:SimpleServiceImplServiceSoapBinding">
+      <soap12:address location="http://localhost:8080/JAXWS-Service/services/SimpleServiceImplPort"/>
+    </wsdl:port>
+  </wsdl:service>
+   <jaxws:bindings>
+       <jaxws:package name="com.tintin.client"/>
+       <jaxws:enableAsyncMapping>true</jaxws:enableAsyncMapping>
+    </jaxws:bindings>
+</wsdl:definitions>

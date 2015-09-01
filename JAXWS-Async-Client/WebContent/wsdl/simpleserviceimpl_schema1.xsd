@@ -1,0 +1,37 @@
+<xs:schema xmlns:tns="http://tintin.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://tintin.com/">
+  <xs:element name="calculateBill" type="tns:calculateBill"/>
+  <xs:element name="calculateBillResponse" type="tns:calculateBillResponse"/>
+  <xs:complexType name="calculateBill">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:customer"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="customer">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="address" type="xs:string"/>
+      <xs:element name="age" type="xs:int"/>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+      <xs:element minOccurs="0" name="phone" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="calculateBillResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:billDetails"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="billDetails">
+    <xs:sequence>
+      <xs:element name="amount" type="xs:int"/>
+      <xs:element minOccurs="0" name="billAddress" type="xs:string"/>
+      <xs:element minOccurs="0" name="endDate" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="startDate" type="xs:dateTime"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="calculationFaultBean">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="exceptionDetails" type="xs:string"/>
+      <xs:element minOccurs="0" name="exceptionTime" type="xs:dateTime"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CalculationFault" nillable="true" type="tns:calculationFaultBean"/>
+</xs:schema>
